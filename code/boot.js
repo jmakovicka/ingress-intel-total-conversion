@@ -320,12 +320,10 @@ function boot() {
   if(window.deviceID) console.log('Your device ID: ' + window.deviceID);
   window.runOnSmartphonesBeforeBoot();
 
-  // overwrite default Leaflet Marker icon to be a neutral color
-  var base = 'https://iitcserv.appspot.com/dist/images';
-  L.Icon.Default.imagePath = base;
-
-  window.iconEnl = L.Icon.Default.extend({options: { iconUrl: base + '/marker-green.png' } });
-  window.iconRes = L.Icon.Default.extend({options: { iconUrl: base + '/marker-blue.png' } });
+  window.iconEnl = L.Icon.Default.extend({options: { iconUrl: 'data:image/png;base64,@@INCLUDEBASE64:images/marker-green.png@@',
+                                                     shadowUrl: 'data:image/png;base64,@@INCLUDEBASE64:images/marker-shadow.png@@' } });
+  window.iconRes = L.Icon.Default.extend({options: { iconUrl: 'data:image/png;base64,@@INCLUDEBASE64:images/marker-blue.png@@',
+                                                     shadowUrl: 'data:image/png;base64,@@INCLUDEBASE64:images/marker-shadow.png@@' } });
 
   window.setupTaphold();
   window.setupStyles();
